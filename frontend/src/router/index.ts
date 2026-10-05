@@ -19,6 +19,7 @@ const Generation = () => import('@/views/generation/index.vue')
 const Protection = () => import('@/views/protection/index.vue')
 const Defect = () => import('@/views/defect/index.vue')
 const Crew = () => import('@/views/crew/index.vue')
+const Perimeter = () => import('@/views/perimeter/index.vue')
 const Spare = () => import('@/views/spare/index.vue')
 
 const router = createRouter({
@@ -43,6 +44,7 @@ const router = createRouter({
     { path: '/protection', name: 'protection', component: Protection },
     { path: '/defect', name: 'defect', component: Defect },
     { path: '/crew', name: 'crew', component: Crew },
+    { path: '/perimeter', name: 'perimeter', component: Perimeter },
     { path: '/spare', name: 'spare', component: Spare },
   ],
 })
