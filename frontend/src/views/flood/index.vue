@@ -18,6 +18,30 @@
       </article>
     </div>
 
+    <!-- 跨模块：周界复核归档的处理结果落到泄洪待办，条数跟着周界告警一起变。 -->
+    <div class="cross-todo">
+      <h3>泄洪前周界隐患待办（来自周界入侵告警，只读）</h3>
+      <p class="page-desc">共 {{ perimeterTodos.length }} 条待办：周界告警每复核归档一条，这里就多一条，跨模块条数同步变化。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>待办编号</th><th>来源告警单</th><th>待办事项</th><th>点位</th><th>责任班组</th><th>生成时间</th></tr>
+        </thead>
+        <tbody>
+          <tr v-for="todo in perimeterTodos" :key="todo.todoNo">
+            <td>{{ todo.todoNo }}</td>
+            <td>{{ todo.sourceAlarmNo }}</td>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.pointName }}</td>
+            <td>{{ todo.crew }}</td>
+            <td>{{ todo.createdAt }}</td>
+          </tr>
+          <tr v-if="!perimeterTodos.length">
+            <td colspan="6" class="empty-state">暂无周界处理结果生成的泄洪待办</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <p class="status-legend">
       <span v-for="item in statusSummary" :key="item.status" class="legend-item">
         {{ item.status }}：{{ item.count }}
@@ -79,7 +103,9 @@ import {
   moduleMeta,
   runAction as applyAction,
 } from '@/api/local-service'
+import { listFloodTodos } from '@/api/perimeter-service'
 import type { EntryRow } from '@/data/types'
+import type { FloodTodo } from '@/data/intrusion/types'
 
 const meta = moduleMeta('flood')
 const columns = ["操作编号", "泄洪闸号", "开启孔数", "泄洪流量", "下游预警", "操作时间", "操作人员", "操作状态"]
@@ -90,6 +116,7 @@ const stats = [{"label": "待审批操作", "value": 0}, {"label": "泄洪中闸
 const rows = ref<EntryRow[]>([])
 const total = ref(0)
 const errorMessage = ref('')
+const perimeterTodos = ref<FloodTodo[]>([])
 const filters = ref<Record<string, string>>({})
 const filterFields = columns.slice(0, 3)
 const statusSummary = computed(() =>
@@ -128,6 +155,7 @@ function reload() {
     const payload = listEntries(meta.key, filters.value)
     rows.value = payload.items
     total.value = payload.total
+    perimeterTodos.value = listFloodTodos()
   } catch (error) {
     errorMessage.value = error instanceof Error ? error.message : '泄洪操作列表读取失败'
   }

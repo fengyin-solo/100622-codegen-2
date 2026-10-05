@@ -20,6 +20,8 @@ const Protection = () => import('@/views/protection/index.vue')
 const Defect = () => import('@/views/defect/index.vue')
 const Crew = () => import('@/views/crew/index.vue')
 const Spare = () => import('@/views/spare/index.vue')
+const Perimeter = () => import('@/views/perimeter/index.vue')
+const Patrol = () => import('@/views/patrol/index.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -44,6 +46,8 @@ const router = createRouter({
     { path: '/defect', name: 'defect', component: Defect },
     { path: '/crew', name: 'crew', component: Crew },
     { path: '/spare', name: 'spare', component: Spare },
+    { path: '/perimeter', name: 'perimeter', component: Perimeter },
+    { path: '/patrol', name: 'patrol', component: Patrol },
   ],
 })
 

@@ -35,3 +35,49 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+.legend-item.night { background: #312e81; color: #fef9c3; }
+.session-bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; margin: 10px 0 14px; padding: 8px 10px; background: #fff; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; color: var(--muted); }
+.session-bar label { display: flex; flex-direction: column; gap: 3px; }
+.session-bar select, .session-bar input { padding: 4px 6px; border: 1px solid var(--border); border-radius: 6px; font-size: 12px; }
+
+/* 周界处置 */
+.peri-layout { display: grid; grid-template-columns: minmax(360px, 0.9fr) 1.3fr; gap: 14px; align-items: start; }
+.peri-list, .peri-detail { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.peri-list .data-table tr { cursor: pointer; }
+.peri-list .data-table tr.active { background: #e8f0fe; }
+.peri-list .data-table tr.offline td { border-left: 3px solid #b42318; }
+.status-dot { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; background: #eef2f7; }
+.status-dot.待确认 { background: #fef3c7; color: #92400e; }
+.status-dot.已出警 { background: #dbeafe; color: #1e40af; }
+.status-dot.已复核 { background: #dcfce7; color: #166534; }
+.tag { display: inline-block; font-size: 11px; border-radius: 4px; padding: 0 5px; margin-left: 4px; }
+.tag.legacy { background: #f3e8ff; color: #6b21a8; }
+.tag.offline-tag { background: #fee2e2; color: #b42318; }
+.detail-head { display: flex; justify-content: space-between; align-items: center; }
+.detail-grid { display: grid; grid-template-columns: 110px 1fr 110px 1fr; gap: 4px 10px; font-size: 13px; margin: 8px 0; }
+.detail-grid dt { color: var(--muted); }
+.detail-grid dd { margin: 0; }
+.detail-section { margin-top: 10px; }
+.detail-section h4 { margin: 0 0 6px; font-size: 13px; }
+.track-list, .flow-list { margin: 0; padding-left: 18px; font-size: 12px; }
+.track-list li, .flow-list li { margin-bottom: 4px; }
+.flow-actor { color: var(--muted); }
+.flow-note { color: #475569; }
+.flow-list { list-style: decimal; }
+.offline-banner { background: #fef2f2; border: 1px solid #fecaca; color: #b42318; padding: 6px 10px; border-radius: 6px; font-size: 13px; margin-top: 8px; }
+.legacy-banner { background: #faf5ff; border: 1px solid #e9d5ff; color: #6b21a8; padding: 6px 10px; border-radius: 6px; font-size: 13px; margin-top: 8px; }
+.detail-actions { display: flex; gap: 10px; margin-top: 12px; }
+.action-hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.foot-msg { font-size: 13px; margin-top: 8px; }
+.ok-text { color: #166534; }
+.detail-empty { padding: 40px 0; }
+.report-box { margin-top: 14px; border-top: 1px dashed var(--border); padding-top: 10px; }
+.report-box h3 { font-size: 14px; margin: 0 0 8px; }
+.report-box .filter-item { margin-bottom: 8px; }
+.report-box select, .report-box input { width: 100%; padding: 5px 6px; border: 1px solid var(--border); border-radius: 6px; }
+.cross-todo { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; }
+.cross-todo h3 { margin: 0 0 4px; font-size: 14px; }
+.legacy-block { margin-top: 14px; background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 10px 12px; }
+.legacy-block h3 { margin: 0 0 6px; font-size: 14px; color: #6b21a8; }
+.data-table tr.legacy { background: #fdfaff; }
+textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 6px; font-size: 13px; }
